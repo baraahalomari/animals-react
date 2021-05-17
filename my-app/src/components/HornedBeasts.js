@@ -32,6 +32,9 @@ render(){
             <Card.Text>
             🐏 Numper of animals: {this.state.numberOfPets}
             </Card.Text>
+            <Card.Text>
+             {this.props.description}
+            </Card.Text>
             
         </Card.Body>
         </Card>
