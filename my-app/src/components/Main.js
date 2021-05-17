@@ -16,9 +16,10 @@ class Main extends React.Component {
     render(){
         return(
             <main>
-                 {hornsData.map(item=>{
+                 {hornsData.map((item,index)=>{
                 return(
                     <HornedBeasts
+                    key={index}
                     title={item.title}
                     imgURL={item.image_url}
                     description={item.description}
