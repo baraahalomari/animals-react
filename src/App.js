@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import hornData from './components/data.json';
+import hornsData from './components/data.json';
 import SelectedBeast from './components/SelectedBeast';
 
 
@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      hornData:this.props.hornData,
+      hornsData:hornsData,
       savedElements:{},
       display:false,
     };
@@ -22,22 +22,29 @@ class App extends React.Component {
   }
   
   handleShow = (param) =>{
-    let result = hornData.find(element =>{
+    let result = hornsData.find(element =>{
       if (element.title === param){
         return element;
       }
     });
+    
     this.setState({
       savedElements:result,
       display:true,
+    });
+  }
+
+  filterAnimals=(filterData)=>{
+    this.setState({
+      hornsData:filterData,
     });
   }
   render(){
     return(
       <div>
         <Header/>
-        <Main hornData ={hornData} handleShow = {this.handleShow}/>
-        <SelectedBeast display={this.state.display} handleClose={this.handleClose} element={this.state.savedElements}/>
+        <Main hornsData ={this.state.hornsData} handleShow = {this.handleShow} filterAnimals={this.filterAnimals}/>
+        <SelectedBeast display={this.state.display} handleClose={this.handleClose} element={this.state.savedElements} />
          <Footer/>
       </div>
     );
